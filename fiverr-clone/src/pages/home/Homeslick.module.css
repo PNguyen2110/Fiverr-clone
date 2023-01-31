@@ -1,0 +1,10 @@
+.slick-prev:before, .slick-next:before{
+    color: rgb(255, 192, 216) !important;
+    font-size: 39px !important;
+}
+@media only screen and (max-width: 640px){
+    .slick-prev:before, .slick-next:before{
+        font-size: 27px !important;
+    } 
+}
+
