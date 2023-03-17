@@ -1,19 +1,18 @@
-import React from 'react'
-import CategoriesBanner from './CategoriesBanner'
-import './categories.css'
-import CategoriesSection from './CategoriesSection'
-import CategoriesBucket from './CategoriesBucket'
-import CategoriesRelate from './CategoriesRelate'
+import React from "react";
+import CategoriesBanner from "./CategoriesBanner";
+import "./categories.css";
+import CategoriesSection from "./CategoriesSection";
+import CategoriesBucket from "./CategoriesBucket";
+import CategoriesRelate from "./CategoriesRelate";
 const Categories = () => {
-
   return (
-    <div className=''>
+    <div className="">
       <CategoriesBanner />
       <CategoriesSection />
       <CategoriesBucket />
       <CategoriesRelate />
     </div>
-  )
-}
+  );
+};
 
-export default Categories
+export default Categories;

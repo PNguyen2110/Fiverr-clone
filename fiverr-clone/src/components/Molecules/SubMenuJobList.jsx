@@ -18,7 +18,7 @@ const SubMenuJobList = () => {
   return (
     <div className="subcheck" style={{ display: "none" }}>
       <Menu mode="horizontal">
-        {jobsList.map((job) => {
+        {jobsList?.map((job) => {
           return (
             <Menu.SubMenu
               key={job.tenLoaiCongViec}
@@ -26,19 +26,25 @@ const SubMenuJobList = () => {
               onTitleClick={() => navigate(`/categories/${job.id}`)}
             >
               {job.dsNhomChiTietLoai.map((item) => {
-                return <Menu.ItemGroup title={item.tenNhom} key = {item.tenNhom} className="font-bold">
-                {item.dsChiTietLoai.map((data)=>{
-                  return (
+                return (
+                  <Menu.ItemGroup
+                    title={item.tenNhom}
+                    key={item.tenNhom}
+                    className="font-bold"
+                  >
+                    {item.dsChiTietLoai.map((data) => {
+                      return (
                         <Menu.Item
-                        className="font-normal"
+                          className="font-normal"
                           key={Math.floor(Math.random() * 10000) + 1000}
                           onClick={() => navigate(`/jobList/${data.id}`)}
                         >
                           {data.tenChiTiet}
                         </Menu.Item>
                       );
-                })}
-              </Menu.ItemGroup>
+                    })}
+                  </Menu.ItemGroup>
+                );
               })}
             </Menu.SubMenu>
           );

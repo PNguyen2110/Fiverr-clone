@@ -4,14 +4,16 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { showModal } from "../../pages/Login/Login";
 import SubMenuJobList from "./SubMenuJobList";
 import Login from "../../pages/Login/Login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Register from "../../pages/register/Register";
+import { useRef } from "react";
 
 export const Header = () => {
   const [nav, setNav] = useState(1);
   const [user, setUser] = useState(false);
   const navigate = useNavigate();
+  const searchRef = useRef(null);
 
   const onSearch = (data) => {
     navigate(`/jobList/${data}`);
@@ -172,7 +174,10 @@ export const Header = () => {
         >
           Fiverr
         </NavLink>
-        <div className="w-[770px] ml-4 font-semibold rounded header-section py-6">
+        <div
+          ref={searchRef}
+          className="w-[770px] ml-4 font-semibold rounded header-section py-6"
+        >
           <Search
             placeholder="What services are you looking for today?"
             onSearch={onSearch}

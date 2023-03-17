@@ -35,6 +35,7 @@ const items = [
 ];
 const AdminTemplate = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
   const navigate = useNavigate();
   const { userInfo } = useSelectorAuth();
   // check Role
@@ -43,11 +44,10 @@ const AdminTemplate = () => {
     console.log("user", user);
     if (user && user.role !== "ADMIN") {
       navigate("/home");
-    } 
+    }
   }, [userInfo]);
-  
-  const [windowWidth, setWindowWidth] = useState(0);
 
+  console.log(123);
   let resizeWindow = () => {
     setWindowWidth(window.innerWidth);
   };

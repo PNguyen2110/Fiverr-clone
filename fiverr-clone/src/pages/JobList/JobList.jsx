@@ -21,14 +21,18 @@ export const JobList = () => {
   };
   const [number, setNumber] = useState(1);
   useEffect(() => {
+    if (window.searchRef) {
+      console.log("window.searchRef.current", window.searchRef);
+    }
+
     const inputcheck = document.body.querySelector(".inputcheck");
     const backgroundcheck = document.body.querySelector(".backgroundcheck");
     const subcheck = document.body.querySelector(".subcheck");
     inputcheck.style.display = "block";
     subcheck.style.display = "block";
     backgroundcheck.style.backgroundColor = "white";
-    backgroundcheck.style.position = 'fixed';
-  });
+    backgroundcheck.style.position = "fixed";
+  }, []);
   const navigate = useNavigate();
   const { itemRender } = useCongViec();
   useEffect(() => {
