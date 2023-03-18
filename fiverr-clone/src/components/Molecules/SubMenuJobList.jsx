@@ -8,7 +8,7 @@ import { menuCongViec } from "../../storeToolKit/CongViec";
 
 const SubMenuJobList = () => {
   const { jobsList } = useCongViec();
-  console.log("jobsList: ", jobsList);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {

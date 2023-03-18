@@ -46,7 +46,7 @@ export const deleteJobDetail = createAsyncThunk(
   "chiTietLoai/deleteJobDetail",
   async (id, { dispatch }) => {
     try {
-      const result = await chiTietLoaiCongViecServices.deleteJobDetail(id);
+      await chiTietLoaiCongViecServices.deleteJobDetail(id);
       ShowMessageSuccess("Success !!!");
       await dispatch(getJobDetail());
     } catch (err) {
@@ -59,7 +59,7 @@ export const postJobTypeDetail = createAsyncThunk(
   "chiTietLoai/postJobDetail",
   async (data, { dispatch }) => {
     try {
-      const result = await chiTietLoaiCongViecServices.postJobTypeDetail(data);
+      await chiTietLoaiCongViecServices.postJobTypeDetail(data);
       ShowMessageSuccess("Success !!!");
     } catch (err) {
       ShowMessageError(err.response.data.content);
@@ -70,7 +70,7 @@ export const putJobTypeDetail = createAsyncThunk(
   "chiTietLoai/postJobDetail",
   async (data, { dispatch }) => {
     try {
-      const result = await chiTietLoaiCongViecServices.putJobTypeDetail(data);
+      await chiTietLoaiCongViecServices.putJobTypeDetail(data);
       ShowMessageSuccess("Success !!!");
       dispatch(getJobDetail());
     } catch (err) {
@@ -83,8 +83,7 @@ export const postImage = createAsyncThunk(
   "chiTietLoai/postImage",
   async (data, { dispatch }) => {
     try {
-      console.log(data);
-      const result = await chiTietLoaiCongViecServices.postImage(data);
+      await chiTietLoaiCongViecServices.postImage(data);
       ShowMessageSuccess("Success !!!");
       dispatch(getJobDetail());
     } catch (err) {

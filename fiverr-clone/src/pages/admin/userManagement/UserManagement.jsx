@@ -1,19 +1,17 @@
 import { Input, Table } from "antd";
-import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useEffect } from "react";
+
 import {
   SearchOutlined,
   EditOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useNguoiDung } from "../../../storeToolKit/NguoiDung/nguoiDungSelector";
 import {
   deleteUser,
-  getInfoUser,
   getUSerList,
-  searchUser,
 } from "../../../storeToolKit/NguoiDung/nguoiDungReducer";
 import { isArray } from "lodash";
 import { useSelectorAuth } from "../../../storeToolKit/Auth";

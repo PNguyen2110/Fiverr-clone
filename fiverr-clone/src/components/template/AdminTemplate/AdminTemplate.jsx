@@ -41,13 +41,13 @@ const AdminTemplate = () => {
   // check Role
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userLogin"));
-    console.log("user", user);
+   
     if (user && user.role !== "ADMIN") {
       navigate("/home");
     }
   }, [userInfo]);
 
-  console.log(123);
+ 
   let resizeWindow = () => {
     setWindowWidth(window.innerWidth);
   };
@@ -98,7 +98,7 @@ const AdminTemplate = () => {
           </div>
           <Menu
             onClick={(item) => {
-              console.log(item.key);
+           
               if (item.key === "user") {
                 navigate("/admin/userManagement");
               } else if (item.key === "workFlow") {

@@ -45,7 +45,7 @@ const Register = () => {
             data.certification = certi;
             // data.certification = [...data.certification];
           }
-          console.log(data);
+
           dispatch(signUp(data));
         })}
         className="flex flex-col  p-6 "

@@ -11,7 +11,6 @@ const CategoriesBanner = () => {
     x.pause();
   }
   useEffect(() => {
-    
     const inputcheck = document.body.querySelector(".inputcheck");
     const backgroundcheck = document.body.querySelector(".backgroundcheck");
     const subcheck = document.body.querySelector(".subcheck");
@@ -72,7 +71,6 @@ const CategoriesBanner = () => {
           className="orca-video"
           style={{ display: `${videocate % 2 === 0 ? "block" : "none"}` }}
           controls
-          poster
           preload="metadata"
           crossOrigin="anonymous"
         >

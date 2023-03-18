@@ -18,11 +18,7 @@ export const EditJobDetail = () => {
         onSubmit={handleSubmit((data) => {
           const ds = [];
           ds.push(data.danhSachChiTiet);
-          console.log({
-            ...data,
-            danhSachChiTiet: ds,
-            id: JSON.parse(localStorage.getItem("idJobDetail")),
-          });
+
           dispatch(
             putJobTypeDetail({
               ...data,

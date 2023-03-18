@@ -18,8 +18,7 @@ const EditJobType = () => {
       id="form"
       onSubmit={handleSubmit((data) => {
         const idJob = JSON.parse(localStorage.getItem("idJob"));
-        console.log(idJob);
-        console.log({ id: idJob, tenLoaiCongViec: data.job });
+
         dispatch(putJobType({ id: idJob, tenLoaiCongViec: data.job }));
       })}
     >

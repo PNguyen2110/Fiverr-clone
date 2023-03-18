@@ -1,14 +1,10 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
-import { Input, Modal, Table } from "antd";
+import { Input, Table } from "antd";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import {
-  SearchOutlined,
-  EditOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import {
   deleteRentList,
@@ -21,7 +17,7 @@ import { isArray } from "lodash";
 export const ServiceManagement = () => {
   const { Search } = Input;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   let { services } = useThueCongViec();
 
   // check data type
@@ -31,8 +27,6 @@ export const ServiceManagement = () => {
   } else {
     arrServices.push(services);
   }
-
-  console.log("services", services);
 
   useEffect(() => {
     dispatch(getServices());
@@ -74,7 +68,6 @@ export const ServiceManagement = () => {
       dataIndex: "hoanThanh",
       width: "20%",
       render: (text, data) => {
-        console.log(data.hoanThanh);
         if (data.hoanThanh.toString() === "true") {
           return (
             <div className="flex justify-between text-green-500">
@@ -122,8 +115,6 @@ export const ServiceManagement = () => {
   const data = arrServices;
 
   const onSearch = (value) => {
-    console.log(value);
-
     dispatch(getServices(value));
   };
   return (

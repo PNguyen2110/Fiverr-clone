@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Button, Modal } from "antd";
+import React from "react";
+
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-// import { signIn, signUp } from "../../storeToolKit/Auth/authReducer";
-import { useNavigate, useParams } from "react-router-dom";
-import { Select } from "antd";
+
 import moment from "moment";
-import {
-  postUser,
-  putUser,
-} from "../../../storeToolKit/NguoiDung/nguoiDungReducer";
+import { postUser } from "../../../storeToolKit/NguoiDung/nguoiDungReducer";
 import { date } from "yup/lib/locale";
-import { useNguoiDung, getInfoUser } from "../../../storeToolKit/NguoiDung";
 
 const AddUser = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const {
     handleSubmit,
     register,
     formState: { errors },
-    reset,
   } = useForm({
     mode: "onBlur",
   });

@@ -21,7 +21,7 @@ const Login = () => {
   // check Role
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userLogin"));
-    console.log("user", user);
+
     if (user && user.role === "USER") {
       navigate("/home");
     } else if (user && user.role === "ADMIN") {

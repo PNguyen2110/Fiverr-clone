@@ -1,19 +1,11 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
-import { Input, Modal, Table } from "antd";
+import { Input, Table } from "antd";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import {
-  SearchOutlined,
-  EditOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
-import { isArray } from "lodash";
-import { useForm } from "react-hook-form";
+import { SearchOutlined, DeleteOutlined } from "@ant-design/icons";
 
-import { useFormik } from "formik";
 import {
   binhLuanTheoCongViec,
   deleteComment,
@@ -25,14 +17,12 @@ import { useComment } from "../../../storeToolKit/BinhLuan";
 export const CommentManager = () => {
   const { Search } = Input;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getComments());
   }, []);
   //
   const { comments, commentByJob } = useComment();
-  console.log("comments", comments);
-  console.log("commentByJob", commentByJob);
 
   const handleChange = (pagination, filters, sorter) => {
     console.log("Various parameters", pagination, filters, sorter);
@@ -105,8 +95,6 @@ export const CommentManager = () => {
     commentByJob && commentByJob.length > 0 ? commentByJob : comments;
 
   const onSearch = (value) => {
-    console.log(value);
-
     dispatch(binhLuanTheoCongViec(value));
   };
   return (

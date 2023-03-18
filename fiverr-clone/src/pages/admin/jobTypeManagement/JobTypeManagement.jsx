@@ -31,14 +31,13 @@ export const JobTypeManagement = () => {
   } else {
     arrJob = jobType;
   }
-  console.log(arrJob);
+
   //
   useEffect(() => {
     dispatch(jobsType());
   }, []);
   const { Search } = Input;
   const onSearch = (value) => {
-    console.log(value);
     dispatch(jobsType(value));
   };
   // modal

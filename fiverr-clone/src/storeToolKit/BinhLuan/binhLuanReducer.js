@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ShowMessageError from "../../pages/Messeage/ShowMessageError";
 import ShowMessageSuccess from "../../pages/Messeage/ShowMessSucces";
 import { binhLuanService } from "../../services/BinhLuanServies";
-import { congViecServices } from "../../services/CongViecServices";
 
 const initialState = {
   commentByJob: [],
@@ -49,11 +48,9 @@ export const binhLuanTheoCongViec = createAsyncThunk(
   async (id) => {
     try {
       const result = await binhLuanService.binhLuanTheoCongViec(id);
-      console.log("RESULT", result.data.content);
+
       return result.data.content;
-    } catch (err) {
-      console.log(err.response.data);
-    }
+    } catch (err) {}
   }
 );
 
@@ -62,10 +59,9 @@ export const postBinhLuan = createAsyncThunk(
   async (data, { dispatch }) => {
     try {
       const result = await binhLuanService.postBinhLuan(data);
-      console.log("data", data);
-      console.log("result", result.data.content);
+
       await dispatch(binhLuanTheoCongViec(data.id));
-      // console.log(data.idNum);
+
       ShowMessageSuccess("Success !!!");
       return result.data.content;
     } catch (err) {
@@ -80,7 +76,7 @@ export const getComments = createAsyncThunk(
   async () => {
     try {
       const result = await binhLuanService.getComment();
-      console.log(result.data.content);
+
       return result.data.content;
     } catch (err) {
       console.log(err.response.data);

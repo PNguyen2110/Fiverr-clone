@@ -68,7 +68,6 @@ export const JobDetailManagement = () => {
       hinhAnh: {},
     },
     onSubmit: async (values) => {
-      console.log(values);
       let formData = new FormData();
 
       formData.append("formFile", values.hinhAnh, values.hinhAnh.name);
@@ -123,7 +122,6 @@ export const JobDetailManagement = () => {
       dataIndex: "hinhAnh",
       width: "20%",
       render: (text, data) => {
-
         if (data.hinhAnh) {
           return (
             <>
@@ -134,10 +132,16 @@ export const JobDetailManagement = () => {
                   alt={data.hinhAnh}
                 />
                 <div>
-                  <button className="bg-blue-400 text-white h-10 w-[60px] rounded-lg" onClick={() => {
-                    localStorage.setItem("idJobEdit", JSON.stringify(data.id));
-                    showModalEditImg()
-                  }}>
+                  <button
+                    className="bg-blue-400 text-white h-10 w-[60px] rounded-lg"
+                    onClick={() => {
+                      localStorage.setItem(
+                        "idJobEdit",
+                        JSON.stringify(data.id)
+                      );
+                      showModalEditImg();
+                    }}
+                  >
                     <i className="fa-solid fa-pen-to-square"></i> Edit
                   </button>
                 </div>
@@ -192,7 +196,6 @@ export const JobDetailManagement = () => {
           <React.Fragment key={Date.now()}>
             <button
               onClick={() => {
-                console.log(data.id);
                 localStorage.setItem("idJobDetail", JSON.stringify(data.id));
                 showModalEdit();
               }}
@@ -217,7 +220,6 @@ export const JobDetailManagement = () => {
   const data = arr;
 
   const onSearch = (value) => {
-    console.log(value);
     dispatch(getJobDetail(value));
   };
   return (
@@ -250,10 +252,7 @@ export const JobDetailManagement = () => {
         onCancel={handleCancelEditImg}
         footer={null}
       >
-        <form
-          className="flex justify-between"
-          onSubmit={formik.handleSubmit}
-        >
+        <form className="flex justify-between" onSubmit={formik.handleSubmit}>
           <input
             name="hinhAnh"
             type="file"

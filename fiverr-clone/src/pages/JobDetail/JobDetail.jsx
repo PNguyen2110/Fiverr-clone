@@ -20,7 +20,7 @@ export const JobDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { jobDetail } = useCongViec();
-  console.log(jobDetail);
+
   const { commentByJob } = useComment();
   const {
     register,
@@ -47,7 +47,7 @@ export const JobDetail = () => {
 
     for (let i = 0; i < star; i++) {
       stars.push(
-        <span className="text-yellow-500">
+        <span key={i} className="text-yellow-500">
           <i className="fa-solid fa-star "></i>
         </span>
       );
@@ -151,16 +151,8 @@ export const JobDetail = () => {
         <button
           type="submit"
           onClick={() => {
-            console.log();
             // if (!localStorage.getItem("userLogin")) {
-            console.log(123);
-            console.log({
-              id: 0,
-              maCongViec: +id,
-              maNguoiThue: handleGetUser(),
-              ngayThue: getTodayDate(),
-              hoanThanh: false,
-            });
+
             dispatch(
               thueCongViecPost({
                 id: 0,
@@ -222,7 +214,7 @@ export const JobDetail = () => {
     <Wrapper className="container mx-auto mb-[300px] relative pt-[130px]">
       {jobDetail.map((job, index) => (
         <div
-          key={index}
+          key={index + 1}
           className="  flex lg:flex-row lg:justify-between flex-col"
         >
           <div className="flex-cols  mx-auto w-full   lg:w-[60%] lg:pr-[114px]">
@@ -281,10 +273,8 @@ export const JobDetail = () => {
               </p>
               <p className="text-black">Thing offer:</p>
               <ul>
-                {job.congViec.moTaNgan.split("+").map((item) => (
-                  <React.Fragment key={Math.random() * 1000}>
-                    <li> - {item}</li>
-                  </React.Fragment>
+                {job.congViec.moTaNgan.split("+").map((item, index) => (
+                  <li key={index}> - {item}</li>
                 ))}
               </ul>
               <p className="text-black">
@@ -472,48 +462,51 @@ export const JobDetail = () => {
             </div>
             <div className="comment mt-8 border-t border-gray-300">
               <div className="mt-5">
-                {commentByJob.map((cmt, index) => (
-                  <div key={index} className="my-12">
-                    <div className="flex ">
-                      <img
-                        className="rounded-full shrink-0 w-[40px] h-[40px]"
-                        src="http://picsum.photos/40/40"
-                        alt=".."
-                      />
-                      <div className="flex flex-col ml-3">
-                        <div className="flex gap-2">
-                          <p className="">{cmt.tenNguoiBinhLuan}</p>
-                          <p>
-                            <span className="text-yellow-500">
-                              <i className="fa-solid fa-star "></i>
-                            </span>
-                            <span>{cmt.saoBinhLuan}</span>
-                          </p>
-                        </div>
-                        <div>
-                          <div>
-                            <p>{cmt.noiDung}</p>
-                            <p className="text-gray-400">{cmt.ngayBinhLuan}</p>
-                            <p className="flex gap-5">
-                              <span>
-                                <i className="fa-solid fa-thumbs-up"></i>
-                                <span className="ml-1">Helpful</span>
+                {commentByJob.map((cmt, index) => {
+                  return (
+                    <div key={index} className="my-12">
+                      <div className="flex ">
+                        <img
+                          className="rounded-full shrink-0 w-[40px] h-[40px]"
+                          src="http://picsum.photos/40/40"
+                          alt=".."
+                        />
+                        <div className="flex flex-col ml-3">
+                          <div className="flex gap-2">
+                            <p className="">{cmt.tenNguoiBinhLuan}</p>
+                            <p>
+                              <span className="text-yellow-500">
+                                <i className="fa-solid fa-star "></i>
                               </span>
-                              <span>
-                                <i className="fa-solid fa-thumbs-down"></i>
-                                <span className="ml-1">Not Helpful</span>
-                              </span>
+                              <span>{cmt.saoBinhLuan}</span>
                             </p>
+                          </div>
+                          <div>
+                            <div>
+                              <p>{cmt.noiDung}</p>
+                              <p className="text-gray-400">
+                                {cmt.ngayBinhLuan}
+                              </p>
+                              <p className="flex gap-5">
+                                <span>
+                                  <i className="fa-solid fa-thumbs-up"></i>
+                                  <span className="ml-1">Helpful</span>
+                                </span>
+                                <span>
+                                  <i className="fa-solid fa-thumbs-down"></i>
+                                  <span className="ml-1">Not Helpful</span>
+                                </span>
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
                 <div className="mt-5">
                   <form
                     onSubmit={handleSubmit((data) => {
-                      // console.log({
                       //   noiDung: data.cmt,
                       //   id: id,
                       //   maNguoiBinhLuan: handleGetUser(),

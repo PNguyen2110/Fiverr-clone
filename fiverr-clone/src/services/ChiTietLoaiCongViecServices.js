@@ -27,7 +27,6 @@ export const chiTietLoaiCongViecServices = {
   },
 
   postImage: (data) => {
-    console.log(data);
     return api.post(
       `chi-tiet-loai-cong-viec/upload-hinh-nhom-loai-cong-viec/${data.id}`,
       data.formData

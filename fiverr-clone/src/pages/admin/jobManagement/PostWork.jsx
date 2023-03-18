@@ -40,7 +40,7 @@ const PostWork = (props) => {
             moTaNgan: data.moTaNgan,
             saoCongViec: +data.saoCongViec,
           };
-          console.log(data5);
+
           dispatch(postWork(data5));
         })}
         className="flex flex-col  p-6 "

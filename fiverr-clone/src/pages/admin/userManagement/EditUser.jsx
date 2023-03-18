@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Button, Modal } from "antd";
+import React, { useEffect } from "react";
+
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-// import { signIn, signUp } from "../../storeToolKit/Auth/authReducer";
-import { useNavigate, useParams } from "react-router-dom";
-import { Select } from "antd";
+
+import { useParams } from "react-router-dom";
+
 import moment from "moment";
 import { putUser } from "../../../storeToolKit/NguoiDung/nguoiDungReducer";
-import { date } from "yup/lib/locale";
-import { useNguoiDung, getInfoUser } from "../../../storeToolKit/NguoiDung";
 
 const EditUser = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const {
     handleSubmit,
     register,
@@ -27,9 +25,6 @@ const EditUser = () => {
     console.log(`selected ${value}`);
   };
 
-  //
-  // const { infoUser } = useNguoiDung();
-  // console.log(infoUser);
   const infoUser = JSON.parse(localStorage.getItem("editUser"));
   let {
     birthday,
@@ -80,7 +75,6 @@ const EditUser = () => {
             data.certification = certi;
           }
 
-          console.log({ ...data, id: id });
           dispatch(putUser({ ...data, id: id }));
         })}
         className="flex flex-col  p-6 "
@@ -128,30 +122,6 @@ const EditUser = () => {
               </div>
             </div>
 
-            {/* <div className="flex w-full">
-              <div className="items-center flex item ">
-                <i className="fa-solid fa-phone"></i>
-              </div>
-              <div className="w-full">
-                <input
-                  className="p-2 w-full"
-                  {...register("phone", {
-                    required: "Phone is required",
-                    minLength: {
-                      value: 9,
-                      message: "Phone must be between 9-11 number",
-                    },
-                    maxLength: {
-                      value: 11,
-                      message: "Phone must be between 9-11 number",
-                    },
-                  })}
-                  type="number"
-                  placeholder="Enter Your Phone"
-                />
-                <p className="text-red-400">{errors?.phone?.message}</p>
-              </div>
-            </div> */}
             <div className="flex w-full">
               <div className="items-center flex item ">
                 <i className="fa-solid fa-briefcase"></i>

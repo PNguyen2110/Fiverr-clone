@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ShowMessageError from "../../pages/Messeage/ShowMessageError";
 import ShowMessageSuccess from "../../pages/Messeage/ShowMessSucces";
 import { congViecServices } from "../../services/CongViecServices";
-import { NguoiDungServices } from "../../services/NguoiDungServices";
 
 const initialState = {
   jobsList: [],
@@ -93,7 +92,7 @@ export const { reducer: congViecReducer, actions: congViecActions } =
         })
         // getTypeWorkDetail1
         .addCase(getTypeWorkDetail1.pending, (state) => {
-          state.isFetchingItem = true
+          state.isFetchingItem = true;
         })
         .addCase(getTypeWorkDetail1.fulfilled, (state, action) => {
           state.isFetchingItem = false;
@@ -164,7 +163,7 @@ export const menuCongViec = createAsyncThunk(
   async (data) => {
     try {
       const result = await congViecServices.menuCongViec();
-      console.log(result.data.content);
+
       return result.data.content;
     } catch (err) {
       console.log(err.response.data);
@@ -177,7 +176,7 @@ export const congViecPhanTrangTimKiem = createAsyncThunk(
   async (data) => {
     try {
       const result = await congViecServices.congViecPhanTrangTimKiem(data);
-      console.log(result.data.content.data);
+
       return result.data.content.data;
     } catch (err) {
       console.log(err.response.data.content);
@@ -190,7 +189,7 @@ export const layCongViecChiTiet = createAsyncThunk(
   async (id) => {
     try {
       const result = await congViecServices.layCongViecChiTiet(id);
-      console.log(result.data.content);
+
       return result.data.content;
     } catch (err) {
       console.log(err.response.data);

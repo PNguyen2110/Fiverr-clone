@@ -34,7 +34,7 @@ export const jobsType = createAsyncThunk(
   async (id = "") => {
     try {
       const result = await loaiCongViecServices.jobType(id);
-      console.log(result.data.content);
+
       return result.data.content;
     } catch (err) {
       console.log(err.response.data.content);

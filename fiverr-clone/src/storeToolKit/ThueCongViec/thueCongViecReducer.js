@@ -85,7 +85,7 @@ export const getServices = createAsyncThunk(
   async (id = "") => {
     try {
       const result = await thueCongViecServices.getServices(id);
-      console.log(result.data.content);
+
       return result.data.content;
     } catch (err) {
       console.log(err.response.data);

@@ -101,7 +101,7 @@ export const getUSerList = createAsyncThunk(
   async (id = "") => {
     try {
       const result = await NguoiDungServices.getUserList(id);
-      console.log(result.data.content);
+
       return result.data.content;
     } catch (err) {
       console.log(err.response.data.content);
@@ -123,7 +123,7 @@ export const searchUser = createAsyncThunk(
   async (id) => {
     try {
       const result = await NguoiDungServices.searchUser(id);
-      console.log(result.data.content);
+
       return result.data.content;
     } catch (err) {
       console.log(err.response.data);

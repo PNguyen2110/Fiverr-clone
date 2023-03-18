@@ -18,10 +18,7 @@ export const AddJobDetail = () => {
         onSubmit={handleSubmit((data) => {
           const ds = [];
           ds.push(data.danhSachChiTiet);
-          console.log({
-            ...data,
-            danhSachChiTiet: ds,
-          });
+
           dispatch(
             postJobTypeDetail({
               ...data,

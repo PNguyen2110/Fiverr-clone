@@ -41,7 +41,6 @@ export const signIn = createAsyncThunk("auth/signIn", async (data) => {
 
     return result.data.content.user;
   } catch (err) {
-    console.log(err.response.data);
     ShowMessageError(err.response.data.content);
   }
 });
@@ -52,7 +51,6 @@ export const signUp = createAsyncThunk("auth/signUp", async (data) => {
     ShowMessageSuccess("Sign Up Successful !");
     return result.data.content;
   } catch (err) {
-    console.log(err.response.data);
     ShowMessageError(err.response.data.content);
   }
 });

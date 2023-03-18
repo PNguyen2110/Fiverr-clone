@@ -15,16 +15,12 @@ import _ from "lodash";
 export const JobList = () => {
   const dispatch = useDispatch();
   const params = useParams();
-  console.log("params: ", params.jobName);
+
   const onChange = (checked) => {
     console.log(`switch to ${checked}`);
   };
   const [number, setNumber] = useState(1);
   useEffect(() => {
-    if (window.searchRef) {
-      console.log("window.searchRef.current", window.searchRef);
-    }
-
     const inputcheck = document.body.querySelector(".inputcheck");
     const backgroundcheck = document.body.querySelector(".backgroundcheck");
     const subcheck = document.body.querySelector(".subcheck");
@@ -42,7 +38,7 @@ export const JobList = () => {
     dispatch(
       congViecPhanTrangTimKiem({ number: number, name: params.jobName })
     );
-  }, [params.jobName] || [number]);
+  }, [params.jobName || number]);
 
   return (
     <Components className="  mt-12 pt-8">
